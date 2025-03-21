@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiryee - Games Born from Boredom</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="parallax-bg"></div>
+        <div class="hero-content">
+            <svg class="joystick" width="200" height="200" viewBox="0 0 100 100">
+                <!-- Simple SVG joystick (will morph with GSAP) -->
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#D72638" stroke-width="4"/>
+                <circle cx="50" cy="30" r="10" fill="#9B111E"/>
+                <rect x="45" y="50" width="10" height="20" fill="#D72638"/>
+            </svg>
+            <h1>Hi, I’m Kiryee. I Got Bored, So I Built Worlds.</h1>
+            <p>Explore my quirky 2D & 3D games—born from restless nights and wild ideas.</p>
+            <button class="cta">Play My Games</button>
+        </div>
+    </section>
+
+    <!-- Featured Games Carousel -->
+    <section class="games">
+        <h2>Featured Games</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <h3>Pixel Drifter</h3>
+                        <p>A 2D rogue-like where you’re a glitchy nomad lost in a collapsing digital desert.</p>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <h3>Cube Collapse</h3>
+                        <p>A 3D puzzle game where gravity’s optional and every move rewrites the rules.</p>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="game-card">
+                        <h3>Boredom Breaker</h3>
+                        <p>A chaotic 2D platformer born from my 3 a.m. coffee binges—jump, die, laugh, repeat.</p>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- Footer (Placeholder) -->
+    <footer>
+        <p>Kiryee: Where Boredom Meets Brilliance</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
