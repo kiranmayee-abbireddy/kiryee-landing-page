@@ -89,6 +89,90 @@ body {
     transform: scale(1.05);
 }
 
+/* Game Thumbnails Section */
+.thumbnails {
+    padding: 50px 20px;
+    background: #FBE4E3; /* Soft Blush */
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.thumbnails h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: #9B111E; /* Ruby Red */
+    margin-bottom: 30px;
+}
+
+.thumbnails-carousel {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.thumbnails-carousel .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: flex 0.1s linear;
+}
+
+.thumbnail {
+    height: 200px;
+    width: 350px;
+    border-radius: 1em;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(219, 219, 219, 0.5);
+    font-family: 'Press Start 2P', cursive;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FBE4E3; /* Soft Blush */
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: width 0.1s linear;
+}
+
+.thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: inherit; /* Inherit the background-image from the .thumbnail */
+    transition: filter 0.3s ease;
+    z-index: 1;
+}
+
+.thumbnail:hover::before {
+    filter: blur(5px); /* Apply blur on hover */
+}
+
+.thumbnail span {
+    opacity: 0;
+    transition: opacity 0.1s linear;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px #3F0D12;
+    z-index: 2; /* Ensure the text is above the blurred background */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.thumbnail:hover {
+    width: 400px; /* Expand on hover */
+    box-shadow: 0 7px 29px rgba(100, 100, 111, 0.2);
+}
+
+.thumbnail:hover span {
+    opacity: 1;
+}
+
 /* About Section */
 .about {
     padding: 100px 20px;
@@ -153,6 +237,12 @@ body {
     margin: 0 auto;
 }
 
+.swiper-button-prev{
+    color:#3F0D12;
+}
+.swiper-button-next{
+    color:#3F0D12;
+}
 .game-card {
     background: #FBE4E3; /* Soft Blush */
     color: #3F0D12; /* Deep Bordeaux */
@@ -328,5 +418,18 @@ footer {
     .coder {
         width: 200px;
         height: 200px;
+    }
+
+    .thumbnail {
+        width: 250px;
+        height: 150px;
+    }
+
+    .thumbnail:hover {
+        width: 300px;
+    }
+
+    .thumbnail span {
+        font-size: 1rem;
     }
 }

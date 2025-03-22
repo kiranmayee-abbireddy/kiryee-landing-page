@@ -133,6 +133,49 @@ ScrollTrigger.create({
     onLeaveBack: () => gsap.to(".hero-content", { opacity: 1, duration: 0.5 }),
 });
 
+// Game Thumbnails Carousel
+const thumbnailsSwiper = new Swiper(".thumbnails-carousel", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+        nextEl: ".thumbnails-carousel .swiper-button-next",
+        prevEl: ".thumbnails-carousel .swiper-button-prev",
+    },
+    breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+    },
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
+});
+
+// Animate Thumbnails Section
+gsap.from(".thumbnails h2", {
+    scrollTrigger: {
+        trigger: ".thumbnails",
+        start: "top 80%",
+        toggleActions: "play none none none",
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.5,
+});
+
+gsap.from(".thumbnail", {
+    scrollTrigger: {
+        trigger: ".thumbnails",
+        start: "top 80%",
+        toggleActions: "play none none none",
+    },
+    opacity: 0,
+    scale: 0.5,
+    duration: 0.5,
+    stagger: 0.2,
+    ease: "back.out(1.7)",
+});
+
 // About Section: Fade In After Circle Moves Out
 gsap.from(".coder", {
     scrollTrigger: {
