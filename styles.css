@@ -5,8 +5,9 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth; /* Smooth scrolling for the entire page */
+html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -17,38 +18,34 @@ body {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    min-height: 200vh; /* Give enough height for the circle to scroll fully out */
     background: #3F0D12; /* Deep Bordeaux */
     position: relative;
+    z-index: 1;
     overflow: hidden;
 }
 
-.glitch-bg {
+.circle {
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: -30vw; /* Adjusted to start closer to the text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50vw; /* Smaller circle: half the viewport width */
+    height: 50vw; /* Full circle (width = height) */
+    background: #FBE4E3; /* Soft Blush */
+    border-radius: 50%; /* Ensure it’s a full circle */
+    z-index: 0;
+}
+
+.hero-content {
+    position: fixed; /* Fix the content in the center of the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #3F0D12, #D72638);
-    animation: glitch-bg 3s infinite;
-}
-
-@keyframes glitch-bg {
-    0% { transform: translate(0, 0); }
-    10% { transform: translate(-5px, 5px); }
-    20% { transform: translate(5px, -5px); }
-    30% { transform: translate(-3px, 3px); }
-    40% { transform: translate(0, 0); }
-    100% { transform: translate(0, 0); }
-}
-
-.arcade {
-    z-index: 1;
+    max-width: 1200px; /* Ensure text doesn’t stretch too wide */
 }
 
 .hero-content h1 {
@@ -57,22 +54,20 @@ body {
     color: #D72638; /* Crimson Silk */
     text-transform: uppercase;
     letter-spacing: 3px;
-    animation: glitch-text 2s infinite;
 }
 
-@keyframes glitch-text {
-    0% { text-shadow: 2px 2px 0 #9B111E; }
-    10% { text-shadow: -2px -2px 0 #9B111E; }
-    20% { text-shadow: 2px -2px 0 #9B111E; }
-    30% { text-shadow: -2px 2px 0 #9B111E; }
-    40% { text-shadow: 0 0 0 #9B111E; }
-    100% { text-shadow: 0 0 0 #9B111E; }
+.hero-content h1 span {
+    transition: color 0.3s ease;
 }
 
 .hero-content p {
     font-size: clamp(1rem, 2vw, 1.5rem);
     color: #FBE4E3; /* Soft Blush */
     margin: 20px 0 30px;
+}
+
+.hero-content p span {
+    transition: color 0.3s ease;
 }
 
 .cta {
@@ -98,6 +93,8 @@ body {
     padding: 100px 20px;
     text-align: center;
     background: #FBE4E3; /* Soft Blush */
+    position: relative;
+    z-index: 2;
 }
 
 .coder {

@@ -1,68 +1,145 @@
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero Section: Arcade Boot-Up & Parallax
-gsap.from(".arcade rect, .arcade circle, .arcade path", {
+// Function to split text into characters and wrap in spans
+function splitTextToSpans(element) {
+    const text = element.textContent;
+    element.innerHTML = text
+        .split("")
+        .map(char => `<span>${char}</span>`)
+        .join("");
+}
+
+// Split the title and tagline into characters
+const title = document.querySelector(".hero-content h1");
+const tagline = document.querySelector(".hero-content p");
+splitTextToSpans(title);
+splitTextToSpans(tagline);
+
+// Hero Section: Initial Animation
+gsap.from(".hero-content h1 span", {
     opacity: 0,
-    stagger: 0.2,
-    duration: 0.5,
-});
-gsap.from(".arcade text", {
-    opacity: 0,
-    scale: 0.5,
+    y: 50,
     duration: 0.5,
     delay: 0.5,
+    stagger: 0.05,
 });
-gsap.to(".arcade text", {
-    scale: 1.05,
-    duration: 1,
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut",
-    delay: 1,
-});
-gsap.from(".hero-content h1", {
+gsap.from(".hero-content p span", {
     opacity: 0,
     y: 50,
     duration: 0.5,
-    delay: 1,
-});
-gsap.from(".hero-content p", {
-    opacity: 0,
-    y: 50,
-    duration: 0.5,
-    delay: 1.2,
+    delay: 0.7,
+    stagger: 0.02,
 });
 gsap.from(".cta", {
     opacity: 0,
     scale: 0.5,
     duration: 0.5,
     ease: "back.out(1.7)",
-    delay: 1.4,
+    delay: 0.9,
 });
 
-// Parallax for Hero
-gsap.to(".arcade", {
+// Hero Section: Circle Movement
+gsap.to(".circle", {
     scrollTrigger: {
         trigger: ".hero",
         start: "top top",
-        end: "bottom top",
+        end: "top+=100% top", // Adjusted for smaller circle size
         scrub: true,
     },
-    y: -100,
-});
-gsap.to(".glitch-bg", {
-    scrollTrigger: {
-        trigger: ".hero",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-    },
-    y: 50,
+    y: "-150%", // Move the smaller circle fully out of view
 });
 
-// About Section: Coder Animation
+// Per-Character Color Transition Based on Circle Position
+const titleSpans = document.querySelectorAll(".hero-content h1 span");
+const taglineSpans = document.querySelectorAll(".hero-content p span");
+const ctaButton = document.querySelector(".cta");
+const circle = document.querySelector(".circle");
+
+ScrollTrigger.create({
+    trigger: ".hero",
+    start: "top top",
+    end: "top+=100% top",
+    scrub: true,
+    onUpdate: (self) => {
+        // Get the circle’s bounding box
+        const circleRect = circle.getBoundingClientRect();
+        const circleCenterX = circleRect.left + circleRect.width / 2;
+        const circleCenterY = circleRect.top + circleRect.height / 2;
+        const circleRadius = circleRect.width / 2;
+
+        // Check each title span
+        titleSpans.forEach(span => {
+            const spanRect = span.getBoundingClientRect();
+            const spanCenterX = spanRect.left + spanRect.width / 2;
+            const spanCenterY = spanRect.top + spanRect.height / 2;
+
+            // Calculate distance between circle center and span center
+            const distance = Math.sqrt(
+                Math.pow(circleCenterX - spanCenterX, 2) +
+                Math.pow(circleCenterY - spanCenterY, 2)
+            );
+
+            // If the span’s center is inside the circle, change its color
+            if (distance < circleRadius) {
+                gsap.to(span, { color: "#3F0D12", duration: 0.3 }); // Over circle: dark color
+            } else {
+                gsap.to(span, { color: "#D72638", duration: 0.3 }); // Over background: bright color
+            }
+        });
+
+        // Check each tagline span
+        taglineSpans.forEach(span => {
+            const spanRect = span.getBoundingClientRect();
+            const spanCenterX = spanRect.left + spanRect.width / 2;
+            const spanCenterY = spanRect.top + spanRect.height / 2;
+
+            const distance = Math.sqrt(
+                Math.pow(circleCenterX - spanCenterX, 2) +
+                Math.pow(circleCenterY - spanCenterY, 2)
+            );
+
+            if (distance < circleRadius) {
+                gsap.to(span, { color: "#3F0D12", duration: 0.3 });
+            } else {
+                gsap.to(span, { color: "#FBE4E3", duration: 0.3 });
+            }
+        });
+
+        // Check the CTA button
+        const ctaRect = ctaButton.getBoundingClientRect();
+        const ctaCenterX = ctaRect.left + ctaRect.width / 2;
+        const ctaCenterY = ctaRect.top + ctaRect.height / 2;
+
+        const ctaDistance = Math.sqrt(
+            Math.pow(circleCenterX - ctaCenterX, 2) +
+            Math.pow(circleCenterY - ctaCenterY, 2)
+        );
+
+        if (ctaDistance < circleRadius) {
+            gsap.to(".cta", { color: "#3F0D12", backgroundColor: "#D72638", duration: 0.3 });
+        } else {
+            gsap.to(".cta", { color: "#FBE4E3", backgroundColor: "#9B111E", duration: 0.3 });
+        }
+    },
+});
+
+// Fade Out Hero Content After Circle Moves Out
+ScrollTrigger.create({
+    trigger: ".circle",
+    start: "top top",
+    end: "top top",
+    onEnter: () => gsap.to(".hero-content", { opacity: 0, duration: 0.5 }),
+    onLeaveBack: () => gsap.to(".hero-content", { opacity: 1, duration: 0.5 }),
+});
+
+// About Section: Fade In After Circle Moves Out
 gsap.from(".coder", {
+    scrollTrigger: {
+        trigger: ".circle",
+        start: "top top", // Start when the circle’s top reaches the top of the viewport
+        toggleActions: "play none none none",
+    },
     opacity: 0,
     y: 50,
     duration: 0.5,
@@ -75,6 +152,11 @@ gsap.to(".coder", {
     ease: "sine.inOut",
 });
 gsap.from(".speech-bubble", {
+    scrollTrigger: {
+        trigger: ".circle",
+        start: "top top",
+        toggleActions: "play none none none",
+    },
     opacity: 0,
     scale: 0,
     duration: 0.5,
@@ -82,6 +164,11 @@ gsap.from(".speech-bubble", {
     delay: 0.5,
 });
 gsap.from(".about-content h2, .about-content p", {
+    scrollTrigger: {
+        trigger: ".circle",
+        start: "top top",
+        toggleActions: "play none none none",
+    },
     opacity: 0,
     y: 30,
     duration: 0.5,
@@ -274,7 +361,6 @@ gsap.from(".final-cta", {
     delay: 0.4,
 });
 
-// Parallax for CTA
 gsap.to(".portal", {
     scrollTrigger: {
         trigger: ".cta-section",
