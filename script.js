@@ -1,7 +1,7 @@
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero Section: Arcade Boot-Up
+// Hero Section: Arcade Boot-Up & Parallax
 gsap.from(".arcade rect, .arcade circle, .arcade path", {
     opacity: 0,
     stagger: 0.2,
@@ -39,6 +39,26 @@ gsap.from(".cta", {
     duration: 0.5,
     ease: "back.out(1.7)",
     delay: 1.4,
+});
+
+// Parallax for Hero
+gsap.to(".arcade", {
+    scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+    },
+    y: -100,
+});
+gsap.to(".glitch-bg", {
+    scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+    },
+    y: 50,
 });
 
 // About Section: Coder Animation
@@ -87,10 +107,8 @@ const swiper = new Swiper(".swiper-container", {
     },
 });
 
-// Process Section: Pixel Spawn Animation
 // Process Section: 3D-Like SVG Animations
 gsap.utils.toArray(".step").forEach((step) => {
-    // Initial spawn animation for each SVG
     gsap.from(step.querySelector("svg"), {
         scrollTrigger: {
             trigger: step,
@@ -103,7 +121,6 @@ gsap.utils.toArray(".step").forEach((step) => {
         ease: "back.out(1.7)",
     });
 
-    // 3D rotation effect
     gsap.to(step.querySelector("svg"), {
         scrollTrigger: {
             trigger: step,
@@ -116,7 +133,6 @@ gsap.utils.toArray(".step").forEach((step) => {
         delay: 0.5,
     });
 
-    // Text spawn animation
     gsap.from(step.querySelector("p"), {
         scrollTrigger: {
             trigger: step,
@@ -130,7 +146,6 @@ gsap.utils.toArray(".step").forEach((step) => {
         delay: 0.3,
     });
 
-    // Specific animations for each SVG
     if (step.querySelector(".coffee-cup")) {
         gsap.to(step.querySelectorAll(".steam"), {
             scrollTrigger: {
@@ -217,7 +232,7 @@ gsap.utils.toArray(".step").forEach((step) => {
     }
 });
 
-// CTA Section: Power-Up Effect
+// CTA Section: Power-Up Effect & Parallax
 gsap.to(".portal", {
     rotation: 360,
     duration: 5,
@@ -257,4 +272,24 @@ gsap.from(".final-cta", {
     duration: 0.5,
     ease: "back.out(1.7)",
     delay: 0.4,
+});
+
+// Parallax for CTA
+gsap.to(".portal", {
+    scrollTrigger: {
+        trigger: ".cta-section",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+    },
+    y: 100,
+});
+gsap.to(".glitch-bg", {
+    scrollTrigger: {
+        trigger: ".cta-section",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+    },
+    y: -50,
 });

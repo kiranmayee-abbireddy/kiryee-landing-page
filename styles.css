@@ -3,11 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for the entire page */
 }
 
 body {
-    font-family: 'Courier New', monospace;
+    font-family: 'Roboto', sans-serif;
     background: #FBE4E3; /* Soft Blush */
     color: #3F0D12; /* Deep Bordeaux */
 }
@@ -49,6 +52,7 @@ body {
 }
 
 .hero-content h1 {
+    font-family: 'Press Start 2P', cursive;
     font-size: clamp(2.5rem, 6vw, 5rem);
     color: #D72638; /* Crimson Silk */
     text-transform: uppercase;
@@ -68,58 +72,64 @@ body {
 .hero-content p {
     font-size: clamp(1rem, 2vw, 1.5rem);
     color: #FBE4E3; /* Soft Blush */
-    margin: 10px 0 20px;
+    margin: 20px 0 30px;
 }
 
 .cta {
-    padding: 12px 24px;
+    padding: 15px 30px;
     background: #9B111E; /* Ruby Red */
     color: #FBE4E3; /* Soft Blush */
     border: 2px solid #D72638;
     border-radius: 5px;
     font-size: 1.2rem;
+    font-family: 'Press Start 2P', cursive;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .cta:hover {
     background: #D72638; /* Crimson Silk */
     box-shadow: 0 0 15px #D72638;
+    transform: scale(1.05);
 }
 
 /* About Section */
 .about {
-    padding: 80px 20px;
+    padding: 100px 20px;
     text-align: center;
     background: #FBE4E3; /* Soft Blush */
 }
 
 .coder {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .about h2 {
+    font-family: 'Press Start 2P', cursive;
     font-size: clamp(2rem, 4vw, 2.5rem);
     color: #9B111E; /* Ruby Red */
+    margin-bottom: 20px;
 }
 
 .about p {
     font-size: clamp(1rem, 2vw, 1.2rem);
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
+    line-height: 1.6;
 }
 
 /* Games Section */
 .games {
-    padding: 60px 20px;
+    padding: 100px 20px;
     background: #3F0D12; /* Deep Bordeaux */
     color: #FBE4E3; /* Soft Blush */
 }
 
 .games h2 {
+    font-family: 'Press Start 2P', cursive;
     text-align: center;
     font-size: clamp(2rem, 4vw, 2.5rem);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .swiper-container {
@@ -131,18 +141,20 @@ body {
 .game-card {
     background: #FBE4E3; /* Soft Blush */
     color: #3F0D12; /* Deep Bordeaux */
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     text-align: center;
-    height: 300px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 3px dashed #D72638;
+    transition: transform 0.3s ease;
 }
 
 .game-card:hover {
     animation: shake 0.5s;
+    transform: scale(1.05);
 }
 
 @keyframes shake {
@@ -159,7 +171,9 @@ body {
     color: #FBE4E3; /* Soft Blush */
     border: none;
     border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .play-btn:hover {
@@ -167,17 +181,17 @@ body {
 }
 
 /* Process Section */
-/* Process Section */
 .process {
-    padding: 80px 20px;
+    padding: 100px 20px;
     background: #FBE4E3; /* Soft Blush */
     text-align: center;
 }
 
 .process h2 {
+    font-family: 'Press Start 2P', cursive;
     font-size: clamp(2rem, 4vw, 2.5rem);
     color: #9B111E; /* Ruby Red */
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .timeline {
@@ -201,19 +215,8 @@ body {
 .step p {
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     color: #3F0D12;
-    font-family: 'Courier New', monospace;
+    font-family: 'Press Start 2P', cursive;
     text-transform: uppercase;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .step {
-        flex-direction: column;
-        text-align: center;
-    }
-    .step svg {
-        margin: 0 auto 20px;
-    }
 }
 
 /* CTA Section */
@@ -226,11 +229,7 @@ body {
     text-align: center;
     background: #3F0D12; /* Deep Bordeaux */
     position: relative;
-}
-
-.portal {
-    position: absolute;
-    z-index: 0;
+    overflow: hidden;
 }
 
 .cta-content {
@@ -238,19 +237,22 @@ body {
 }
 
 .cta-section h2 {
+    font-family: 'Press Start 2P', cursive;
     font-size: clamp(2rem, 4vw, 2.5rem);
     color: #FBE4E3; /* Soft Blush */
+    margin-bottom: 20px;
 }
 
 .cta-section p {
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: #FBE4E3;
-    margin: 20px 0;
+    margin: 20px 0 30px;
 }
 
 .final-cta {
     padding: 15px 30px;
     font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-family: 'Press Start 2P', cursive;
     box-shadow: 0 0 10px #D72638;
 }
 
@@ -259,11 +261,17 @@ footer {
     background: #3F0D12; /* Deep Bordeaux */
     color: #FBE4E3; /* Soft Blush */
     text-align: center;
-    padding: 20px;
+    padding: 30px;
+    font-family: 'Press Start 2P', cursive;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .step { flex-direction: column; text-align: center; }
-    .step svg { margin: 0 auto 10px; }
+    .step {
+        flex-direction: column;
+        text-align: center;
+    }
+    .step svg {
+        margin: 0 auto 20px;
+    }
 }
