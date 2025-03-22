@@ -80,6 +80,7 @@ body {
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: inline-block; /* Ensure it’s visible */
 }
 
 .cta:hover {
@@ -99,6 +100,23 @@ body {
 
 .coder {
     margin-bottom: 30px;
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.screen {
+    transition: transform 0.5s ease;
+}
+
+.code-line {
+    transition: opacity 0.3s ease;
+}
+
+.controller-icon {
+    transition: opacity 0.3s ease, transform 0.5s ease;
 }
 
 .about h2 {
@@ -169,8 +187,10 @@ body {
     border: none;
     border-radius: 5px;
     font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s ease;
+    display: inline-block; /* Ensure it’s visible */
 }
 
 .play-btn:hover {
@@ -250,7 +270,19 @@ body {
     padding: 15px 30px;
     font-size: clamp(1.1rem, 2vw, 1.3rem);
     font-family: 'Press Start 2P', cursive;
+    background: #9B111E; /* Ruby Red */
+    color: #FBE4E3; /* Soft Blush */
+    border: 2px solid #D72638;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
     box-shadow: 0 0 10px #D72638;
+    display: inline-block; /* Ensure it’s visible */
+}
+
+.final-cta:hover {
+    background: #D72638; /* Crimson Silk */
+    transform: scale(1.05);
 }
 
 /* Footer */
@@ -262,6 +294,22 @@ footer {
     font-family: 'Press Start 2P', cursive;
 }
 
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #FBE4E3;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #D72638; /* Crimson Silk */
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .step {
@@ -270,5 +318,15 @@ footer {
     }
     .step svg {
         margin: 0 auto 20px;
+    }
+
+    .footer-links a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .coder {
+        width: 200px;
+        height: 200px;
     }
 }

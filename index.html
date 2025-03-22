@@ -21,12 +21,25 @@
 
     <!-- About Me Section -->
     <section class="about">
-        <svg class="coder" width="200" height="200" viewBox="0 0 200 200">
-            <rect x="80" y="120" width="40" height="40" fill="#D72638" stroke="#9B111E" stroke-width="2"/>
-            <rect x="90" y="100" width="20" height="20" fill="#FBE4E3"/>
-            <rect x="90" y="80" width="20" height="20" fill="#FBE4E3"/>
-            <path class="speech-bubble" d="M120 70 L150 70 L150 60 Q160 50 170 60 L180 70 Q190 80 200 90 L200 110 Q190 100 180 90 Z" fill="#FBE4E3" stroke="#D72638" stroke-width="2"/>
-            <text x="130" y="90" fill="#3F0D12" font-size="20" font-family="'Press Start 2P', cursive">I make games!</text>
+        <svg class="coder" width="300" height="300" viewBox="0 0 300 300">
+            <!-- Laptop Base -->
+            <rect x="50" y="150" width="200" height="50" fill="#D72638" stroke="#9B111E" stroke-width="5"/>
+            <!-- Laptop Screen Background -->
+            <rect class="screen" x="50" y="50" width="200" height="100" fill="#FBE4E3" stroke="#9B111E" stroke-width="5"/>
+            <!-- Code Lines on Screen -->
+            <rect class="code-line" x="60" y="60" width="20" height="5" fill="#3F0D12" opacity="0"/>
+            <rect class="code-line" x="90" y="60" width="15" height="5" fill="#3F0D12" opacity="0"/>
+            <rect class="code-line" x="60" y="70" width="25" height="5" fill="#3F0D12" opacity="0"/>
+            <rect class="code-line" x="95" y="70" width="10" height="5" fill="#3F0D12" opacity="0"/>
+            <rect class="code-line" x="60" y="80" width="30" height="5" fill="#3F0D12" opacity="0"/>
+            <rect class="code-line" x="100" y="80" width="20" height="5" fill="#3F0D12" opacity="0"/>
+            <!-- Game Controller Icon -->
+            <g class="controller-icon" opacity="0">
+                <path d="M220 30 Q240 50 260 30 L260 10 Q240 30 220 10 Z" fill="#9B111E" stroke="#3F0D12" stroke-width="3"/>
+                <circle cx="230" cy="15" r="5" fill="#FBE4E3"/>
+                <circle cx="250" cy="15" r="5" fill="#FBE4E3"/>
+                <rect x="238" y="5" width="5" height="10" fill="#FBE4E3"/>
+            </g>
         </svg>
         <div class="about-content">
             <h2>About Me</h2>
@@ -127,6 +140,10 @@
     <!-- Footer -->
     <footer>
         <p>Kiryee: Where Boredom Meets Brilliance</p>
+        <div class="footer-links">
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+        </div>
     </footer>
 
     <!-- Scripts -->

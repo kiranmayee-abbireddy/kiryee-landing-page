@@ -144,6 +144,54 @@ gsap.from(".coder", {
     y: 50,
     duration: 0.5,
 });
+
+// Animate the laptop screen "opening"
+gsap.from(".screen", {
+    scrollTrigger: {
+        trigger: ".circle",
+        start: "top top",
+        toggleActions: "play none none none",
+    },
+    transformOrigin: "bottom",
+    rotationX: 90,
+    duration: 0.7,
+    ease: "power2.out",
+    delay: 0.3,
+});
+
+// Animate the code lines "typing" on the screen
+gsap.to(".code-line", {
+    scrollTrigger: {
+        trigger: ".circle",
+        start: "top top",
+        toggleActions: "play none none none",
+    },
+    opacity: 1,
+    duration: 0.3,
+    stagger: 0.2,
+    delay: 1,
+    repeat: -1,
+    repeatDelay: 2,
+});
+
+// Animate the controller icon bouncing in
+gsap.to(".controller-icon", {
+    scrollTrigger: {
+        trigger: ".circle",
+        start: "top top",
+        toggleActions: "play none none none",
+    },
+    opacity: 1,
+    y: -20,
+    duration: 0.5,
+    ease: "back.out(1.7)",
+    delay: 2,
+    repeat: -1,
+    repeatDelay: 3,
+    yoyo: true,
+});
+
+// Floating animation for the entire SVG
 gsap.to(".coder", {
     y: -10,
     duration: 1,
@@ -151,18 +199,8 @@ gsap.to(".coder", {
     yoyo: true,
     ease: "sine.inOut",
 });
-gsap.from(".speech-bubble", {
-    scrollTrigger: {
-        trigger: ".circle",
-        start: "top top",
-        toggleActions: "play none none none",
-    },
-    opacity: 0,
-    scale: 0,
-    duration: 0.5,
-    ease: "back.out(1.7)",
-    delay: 0.5,
-});
+
+// Animate the About Me text
 gsap.from(".about-content h2, .about-content p", {
     scrollTrigger: {
         trigger: ".circle",
@@ -192,6 +230,21 @@ const swiper = new Swiper(".swiper-container", {
         delay: 3000,
         disableOnInteraction: false,
     },
+});
+
+// Animate Play Buttons in Featured Games Section
+gsap.utils.toArray(".play-btn").forEach(btn => {
+    gsap.from(btn, {
+        scrollTrigger: {
+            trigger: btn,
+            start: "top 80%",
+            toggleActions: "play none none none",
+        },
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.5,
+        ease: "back.out(1.7)",
+    });
 });
 
 // Process Section: 3D-Like SVG Animations
@@ -378,4 +431,17 @@ gsap.to(".glitch-bg", {
         scrub: true,
     },
     y: -50,
+});
+
+// Animate Footer Links
+gsap.from(".footer-links a", {
+    scrollTrigger: {
+        trigger: "footer",
+        start: "top 80%",
+        toggleActions: "play none none none",
+    },
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    stagger: 0.2,
 });
